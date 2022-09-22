@@ -271,8 +271,7 @@
 
       memcpy(&oFliped, pBitmap, sizeof(FT_Bitmap));
       oFliped.buffer = NULL;
-      pPixelFuncs->init_buffer((&oFliped));
-
+      size = pPixelFuncs->init_buffer((&oFliped));
       if (FT_CHECK_FLIP_L2R(flags))
       {
           memset(oFliped.buffer, 0, size);
@@ -336,7 +335,6 @@
 
   static UCHAR* FT_Bitmap_Rotate(FT_Bitmap* pBitmap, int degree, FT_GlyphSlot slot, const int flags)
   {
-      int size;
       FT_Bitmap oRotated = {0};
       FT_Bitmap_Pixel_MN*   pPixelFuncs;
       FT_Bitmap_Rotate_90N* pRotateFuncs;
